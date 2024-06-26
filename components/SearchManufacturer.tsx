@@ -7,7 +7,6 @@ import {
   ComboboxInput,
   ComboboxOption,
   ComboboxOptions,
-  Input,
   Transition,
 } from "@headlessui/react";
 import Image from "next/image";
@@ -18,6 +17,7 @@ const SearchManufacturer = ({
   setManufacturer,
 }: SearchMaunfaracturerProps) => {
   const [query, setQuery] = useState("");
+
   const filtered =
     query === ""
       ? manufacturers
@@ -27,12 +27,15 @@ const SearchManufacturer = ({
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
-
-  console.log(filtered, "filtered");
-  console.log(query, "query");
+const handlechange = (e:string | null) => {
+  if(e!==null){
+    setManufacturer(e)
+    //setQuery()
+  }
+}
   return (
     <div className="search-manufacturer">
-      <Combobox value={manufacturer}>
+      <Combobox value={manufacturer} onChange={handlechange}>
         <div className="relative w-full">
           <Button className="absolute top-[14px]">
             <Image
@@ -41,12 +44,12 @@ const SearchManufacturer = ({
               className="ml-4"
               height={20}
               alt="car logo"
-            ></Image>
+            />
           </Button>
           <ComboboxInput
             className="search-manufacturer__input"
-            value={query}
-            displayValue={(item: string) => item}
+            value={manufacturer}
+            displayValue={(item:string) => item}
             placeholder="Volkswagen"
             onChange={(e) => setQuery(e.target.value)}
           />
@@ -61,12 +64,12 @@ const SearchManufacturer = ({
               {filtered.map((item) => (
                 <ComboboxOption
                   key={item}
+                  value={item}
                   className={({ active }) =>
                     `relative search-manufacturer__option ${
                       active ? "bg-primary-blue text-white" : "text-gray-900"
                     }`
                   }
-                  value={item}
                 >
                   {({ selected, active }) => (
                     <>
@@ -77,14 +80,14 @@ const SearchManufacturer = ({
                       >
                         {item}
                       </span>
-
-                      {/* Show an active blue background color if the option is selected */}
                       {selected ? (
                         <span
                           className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                            active ? "text-white" : "text-pribg-primary-purple"
+                            active ? "text-white" : "text-primary-blue"
                           }`}
-                        ></span>
+                        >
+                          {/* Add checkmark or indicator */}
+                        </span>
                       ) : null}
                     </>
                   )}
