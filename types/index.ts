@@ -1,3 +1,4 @@
+
 import { manufacturers } from './../constant/index';
 
 import { MouseEventHandler } from "react";
@@ -32,6 +33,17 @@ export interface SearchBarProps {
   title:string
 } 
 
+export interface FilterProps{
+  manufacturer : string,
+  model : string,
+  year : number,
+  fuel : string,
+  limit : number,
+
+}
+export interface HomeProps {
+  searchParams: FilterProps;
+}
 
 
 export interface CarProps {

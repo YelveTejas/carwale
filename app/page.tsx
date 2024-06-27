@@ -1,13 +1,22 @@
 import { CarCard, CustomeFilter, Hero, SearchBar } from "@/components";
+import { manufacturers } from "@/constant";
+import { FilterProps, HomeProps } from "@/types";
 import { fetchCars } from "@/utilis";
 import { all } from "axios";
+import { lutimes } from "fs";
 
 import Image from "next/image";
 
-export default async function Home() {
-  const allCars =await fetchCars();
- // console.log(allCars)
-  const isEmpty = allCars.length === 0 || !Array.isArray(allCars) || !allCars
+export default async function Home({searchParams}:HomeProps) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer,
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
+  // console.log(allCars)
+  const isEmpty = allCars.length === 0 || !Array.isArray(allCars) || !allCars;
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -17,30 +26,25 @@ export default async function Home() {
           <p>Explore the cars you might like</p>
         </div>
         <div className="home__filter">
-          <SearchBar title='fuel' />
+          <SearchBar title="fuel" />
           <div className="home__filter-container">
-            <CustomeFilter title="year"/>
+            <CustomeFilter title="year" />
           </div>
         </div>
-       {
-        !isEmpty ? (
-           <section>
-<div className="home__cars.wrapper">
-  {
-     allCars?.map((car)=>(
-      <CarCard car={car}/>
-     ))
-  }
-
-</div>
-           </section>
-        ):(
+        {!isEmpty ? (
+          <section>
+            <div className="home__cars-wrapper">
+              {allCars?.map((car) => (
+                <CarCard car={car} />
+              ))}
+            </div>
+          </section>
+        ) : (
           <div className="home__error-container">
-          <h2 className="text-black text-xl font-bold">No results</h2>
-          <p className="mt-2">{allCars?.message}</p>
+            <h2 className="text-black text-xl font-bold">No results</h2>
+            <p className="mt-2">{allCars?.message}</p>
           </div>
-        )
-       }
+        )}
       </div>
     </main>
   );
