@@ -3,9 +3,8 @@ import { SearchBarProps } from "@/types";
 import React, { useState } from "react";
 import { SearchManufacturer } from "./";
 import Image from "next/image";
-import { Router } from "next/router";
-import { useRouter } from "next/navigation";
-const SearchButton = ({ otherstyle }: { otherstyle: string }) => (
+0
+import { useRouter } from "next/navigation";const SearchButton = ({ otherstyle }: { otherstyle: string }) => (
   <button type="submit" className={`-ml-3 z-10 ${otherstyle}`}>
     <Image
       src={`/magnifying-glass.svg`}
@@ -16,7 +15,7 @@ const SearchButton = ({ otherstyle }: { otherstyle: string }) => (
     />
   </button>
 );
-const SearchBar = ({ title }: SearchBarProps) => {
+const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState("");
   const router = useRouter();
   const [model, setModel] = useState("");
@@ -32,25 +31,24 @@ const SearchBar = ({ title }: SearchBarProps) => {
 
   const updateSearchParams = (model: string, manufacturer: string) => {
     const searchParams = new URLSearchParams(window.location.search);
-    if(model) 
-      {
-        searchParams.set("model", model)
-      }
-      else{
-        searchParams.delete("model")
-      }
+    if (model) {
+      searchParams.set("model", model);
+    } else {
+      searchParams.delete("model");
+    }
 
-      if(manufacturer){
-        searchParams.set("manufacturer", manufacturer)
-      }else{
-        searchParams.delete("manufacturer")
-      }
+    if (manufacturer) {
+      searchParams.set("manufacturer", manufacturer);
+    } else {
+      searchParams.delete("manufacturer");
+    }
 
-      const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+    const newPathname = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
 
-      router.push(newPathname);
-      
-  }
+    router.push(newPathname);
+  };
   return (
     <form className="searchbar" onSubmit={handleSearch}>
       <div className="searchbar__item">

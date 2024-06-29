@@ -23,10 +23,13 @@ export interface SearchMaunfaracturerProps {
   setManufacturer: React.Dispatch<React.SetStateAction<string>>;
 }
 
-
+export interface showMoreProps {
+  pageNumber: number;
+  isNext: boolean;
+}
 export interface customFilterProps{
   title :string
-  // opttions : OptionProps[]
+  options : OptionProps[]
 }
 
 export interface SearchBarProps {
