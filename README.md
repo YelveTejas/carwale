@@ -1,13 +1,13 @@
 ## <a name="introduction">🤖 Introduction</a>
 
-<h1>Prompts App</h1>
+<h1>Cars App</h1>
 
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
 - Next.js
-- MongoDB
-- NextAuth
+- React
+- Axios
 - TailwindCSS
 
 ## <a name="features">🔋 Features</a>
@@ -17,16 +17,6 @@
 👉 **Search functionality**
 
 👉 **Pagination**
-
-👉 **Copy to Clipboard**: Implement a convenient "Copy to Clipboard" functionality for users to easily copy the AI prompts for their use.
-
-👉 **Search Prompts by Specific Tag**: Allow users to search for prompts based on specific tags, making it easier to find prompts related to specific topics.
-
-👉 **Google Authentication using NextAuth**: Enable secure Google authentication using NextAuth, ensuring a streamlined and trustworthy login experience.
-
-👉 **Responsive Website**: Develop a fully responsive website to ensure optimal user experience across various devices, from desktops to smartphones
-
-and many more, including code architecture and reusability 
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -43,7 +33,7 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/adrianhajdin/project_next_13_ai_prompt_sharing.git
+git clone https:https://github.com/YelveTejas/carwale.git
 cd project_next_13_ai_prompt_sharing
 ```
 
@@ -57,18 +47,9 @@ npm install
 
 **Set Up Environment Variables**
 
-Create a new file named `.env` in the root of your project and add the following content:
 
-```env
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_URL_INTERNAL=http://localhost:3000
-NEXTAUTH_SECRET=
-GOOGLE_ID=
-GOOGLE_CLIENT_SECRET=
-MONGODB_URI=
-```
 
-Replace the placeholder values with your actual credentials. You can obtain these credentials by signing up on these corresponding websites from [Google Cloud Console](https://console.cloud.google.com/welcome?rapt=AEjHL4MBaLLneW6OfAHf_zgms1eWZFw1wdy0_KIC4uh1nEqh2m4ojOvrXNlzJ4h7CZTkpiWgcsoHbUvS-FMdCP7WIkaVlPAeU7cnVR6Y0wJHeLMOtU6KAzA&project=promptopia-385410), [Cryptpool](https://www.cryptool.org/en/cto/openssl) (for random Auth Secret), and [MongoDB](https://www.mongodb.com/). 
+ 
 
 **Running the Project**
 
